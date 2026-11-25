@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #ea580c 100%);
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.97);
+    padding: 24px 22px 28px;
+    border-radius: 22px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    text-align: center;
+    max-width: 450px;
+    width: 94%;
+}
+
+.arena-wrapper {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+    border: 2px solid #e2e8f0;
+}
+
+.arena-svg {
+    display: block;
+}
+
+/* ========================================================
+   CHỈNH TỐC ĐỘ CẢ PHA BÓNG TẠI ĐÂY (mặc định 4.8s / 1 vòng)
+   ======================================================== */
+.mikasa-ball {
+    animation: rallySequence 4.8s linear infinite;
+}
+
+.player-left {
+    animation: leftAction 4.8s ease-in-out infinite;
+}
+
+.player-right {
+    animation: rightAction 4.8s ease-in-out infinite;
+}
+
+.smash-spark {
+    animation: sparkFlash 4.8s linear infinite;
+}
+
+/* Chuỗi 4 nhịp:
+   0% -> 28%: Kỳ (bước 1) bổng từ trái qua lưới sang phải
+   28% -> 55%: Bên phải mớm bóng nhẹ qua lưới về lại bên trái
+   55% -> 68%: Bên trái bật nhảy đập bóng cực căng xuống sân phải
+   68% -> 100%: Bên phải bay người cứu bóng bật ngược qua trái */
+@keyframes rallySequence {
+    /* 1. Kỳ bóng qua */
+    0%   { transform: translate(126px, 108px) rotate(0deg); }
+    14%  { transform: translate(210px, 36px) rotate(160deg); }
+    28%  { transform: translate(294px, 106px) rotate(320deg); }
+
+    /* 2. Mớm bóng lại */
+    41%  { transform: translate(210px, 44px) rotate(480deg); }
+    54%  { transform: translate(128px, 74px) rotate(640deg); }
+
+    /* 3. Đập bóng (Smash cực nhanh!) */
+    61%  { transform: translate(210px, 62px) rotate(920deg); }
+    68%  { transform: translate(286px, 134px) rotate(1250deg); }
+
+    /* 4. Bên phải cứu bóng bổng lên trả lại */
+    84%  { transform: translate(210px, 34px) rotate(1450deg); }
+    100% { transform: translate(126px, 108px) rotate(1650deg); }
+}
+
+/* Chuyển động người bên trái (đỡ bóng lúc 0% và bật nhảy đập bóng lúc 54%) */
+@keyframes leftAction {
+    0%, 42%, 68%, 100% {
+        transform: translate(0, 0);
+    }
+    54% {
+        transform: translate(14px, -28px); /* Bật nhảy cao đập bóng */
+    }
+}
+
+/* Chuyển động người bên phải (mớm bóng lúc 28% và đổ người cứu bóng lúc 68%) */
+@keyframes rightAction {
+    0%, 24%, 45%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    28% {
+        transform: translate(-6px, -6px) rotate(0deg); /* Nhún người mớm bóng */
+    }
+    68% {
+        transform: translate(-18px, 16px) rotate(-28deg); /* Bay người cứu bóng sát sàn */
+    }
+    80% {
+        transform: translate(-10px, 8px) rotate(-12deg);
+    }
+}
+
+/* Tia lửa lóe lên đúng khoảnh khắc đập bóng (54% - 60%) */
+@keyframes sparkFlash {
+    0%, 52%, 61%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    55% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+h1 {
+    font-size: 21px;
+    color: #0f172a;
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 24px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    min-height: 50px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#yesBtn {
+    background-color: #16a34a;
+    color: white;
+    z-index: 10;
+}
+
+#yesBtn:hover {
+    background-color: #15803d;
+}
+
+#noBtn {
+    background-color: #dc2626;
+    color: white;
+    transition: left 0.12s ease, top 0.12s ease;
+}

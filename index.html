@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rủ chơi bóng chuyền</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Khung cảnh Nhà thi đấu bóng chuyền -->
+        <div class="arena-wrapper">
+            <svg class="arena-svg" viewBox="0 0 420 200" width="100%" height="185">
+                <defs>
+                    <!-- Hiệu ứng bóng Mikasa V200W -->
+                    <radialGradient id="mikasaGrad" cx="35%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#fde047"/>
+                        <stop offset="65%" stop-color="#eab308"/>
+                        <stop offset="100%" stop-color="#ca8a04"/>
+                    </radialGradient>
+                    <clipPath id="ballClip">
+                        <circle cx="0" cy="0" r="10"/>
+                    </clipPath>
+                </defs>
+
+                <!-- 1. Tường & Đèn trần nhà thi đấu -->
+                <rect x="0" y="0" width="420" height="125" fill="#1e293b"/>
+                <rect x="0" y="0" width="420" height="14" fill="#0f172a"/>
+                <rect x="55" y="4" width="55" height="5" rx="2" fill="#e0f2fe" opacity="0.85"/>
+                <rect x="182" y="4" width="55" height="5" rx="2" fill="#e0f2fe" opacity="0.85"/>
+                <rect x="310" y="4" width="55" height="5" rx="2" fill="#e0f2fe" opacity="0.85"/>
+
+                <!-- Khán đài & Khán giả -->
+                <rect x="0" y="24" width="420" height="62" fill="#334155"/>
+                <!-- Các hàng khán giả chấm màu sinh động -->
+                <g opacity="0.75">
+                    <circle cx="25" cy="36" r="4" fill="#94a3b8"/><circle cx="42" cy="36" r="4" fill="#cbd5e1"/><circle cx="60" cy="36" r="4" fill="#f8fafc"/>
+                    <circle cx="80" cy="36" r="4" fill="#64748b"/><circle cx="100" cy="36" r="4" fill="#e2e8f0"/><circle cx="120" cy="36" r="4" fill="#94a3b8"/>
+                    <circle cx="145" cy="36" r="4" fill="#cbd5e1"/><circle cx="165" cy="36" r="4" fill="#f1f5f9"/><circle cx="185" cy="36" r="4" fill="#64748b"/>
+                    <circle cx="235" cy="36" r="4" fill="#cbd5e1"/><circle cx="255" cy="36" r="4" fill="#f8fafc"/><circle cx="275" cy="36" r="4" fill="#94a3b8"/>
+                    <circle cx="295" cy="36" r="4" fill="#e2e8f0"/><circle cx="315" cy="36" r="4" fill="#64748b"/><circle cx="340" cy="36" r="4" fill="#cbd5e1"/>
+                    <circle cx="360" cy="36" r="4" fill="#f1f5f9"/><circle cx="380" cy="36" r="4" fill="#94a3b8"/><circle cx="400" cy="36" r="4" fill="#e2e8f0"/>
+
+                    <circle cx="18" cy="52" r="4.5" fill="#e2e8f0"/><circle cx="36" cy="52" r="4.5" fill="#94a3b8"/><circle cx="55" cy="52" r="4.5" fill="#cbd5e1"/>
+                    <circle cx="75" cy="52" r="4.5" fill="#f8fafc"/><circle cx="95" cy="52" r="4.5" fill="#64748b"/><circle cx="115" cy="52" r="4.5" fill="#cbd5e1"/>
+                    <circle cx="305" cy="52" r="4.5" fill="#94a3b8"/><circle cx="325" cy="52" r="4.5" fill="#f8fafc"/><circle cx="345" cy="52" r="4.5" fill="#cbd5e1"/>
+                    <circle cx="365" cy="52" r="4.5" fill="#64748b"/><circle cx="385" cy="52" r="4.5" fill="#e2e8f0"/><circle cx="405" cy="52" r="4.5" fill="#94a3b8"/>
+                </g>
+
+                <!-- Băng rôn giải đấu trên khán đài như ảnh -->
+                <rect x="135" y="45" width="150" height="22" rx="3" fill="#b91c1c" stroke="#facc15" stroke-width="1.2"/>
+                <text x="210" y="59" font-size="10" font-weight="bold" fill="#fef08a" text-anchor="middle" letter-spacing="1">GIẢI BÓNG CHUYỀN VÔ ĐỊCH</text>
+
+                <!-- Hàng rào biển quảng cáo quanh sân -->
+                <rect x="0" y="86" width="140" height="22" fill="#15803d" stroke="#0f172a" stroke-width="1"/>
+                <text x="70" y="100" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">MIKASA V200W</text>
+                <rect x="140" y="86" width="140" height="22" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+                <text x="210" y="100" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="middle">VOLLEYBALL ARENA</text>
+                <rect x="280" y="86" width="140" height="22" fill="#1d4ed8" stroke="#0f172a" stroke-width="1"/>
+                <text x="350" y="100" font-size="8" font-weight="bold" fill="#fde047" text-anchor="middle">CHỐT KÈO RA SÂN</text>
+
+                <!-- 2. Sàn thảm Taraflex chuẩn thi đấu (viền xanh + lòng cam) -->
+                <polygon points="0,108 420,108 420,200 0,200" fill="#0284c7"/>
+                <!-- Khu vực sân trong màu cam -->
+                <polygon points="48,118 372,118 398,186 22,186" fill="#f97316" stroke="#ffffff" stroke-width="2.5"/>
+                <!-- Vạch giữa sân & vạch tấn công 3m -->
+                <line x1="210" y1="118" x2="210" y2="186" stroke="#ffffff" stroke-width="2.5"/>
+                <line x1="152" y1="118" x2="144" y2="186" stroke="#ffffff" stroke-width="1.8" stroke-dasharray="4 2"/>
+                <line x1="268" y1="118" x2="276" y2="186" stroke="#ffffff" stroke-width="1.8" stroke-dasharray="4 2"/>
+
+                <!-- 3. Cột lưới bọc đệm xanh & Lưới thi đấu -->
+                <!-- Cột xa -->
+                <rect x="207" y="64" width="6" height="56" rx="2" fill="#1e3a8a"/>
+                <!-- Thân lưới -->
+                <rect x="206" y="68" width="8" height="36" fill="rgba(255,255,255,0.22)" stroke="#ffffff" stroke-width="1"/>
+                <line x1="206" y1="77" x2="214" y2="77" stroke="#ffffff" stroke-width="0.8"/>
+                <line x1="206" y1="86" x2="214" y2="86" stroke="#ffffff" stroke-width="0.8"/>
+                <line x1="206" y1="95" x2="214" y2="95" stroke="#ffffff" stroke-width="0.8"/>
+                <!-- Băng trắng mép trên lưới & Ăng-ten đỏ trắng -->
+                <rect x="205" y="66" width="10" height="4" fill="#ffffff"/>
+                <line x1="210" y1="54" x2="210" y2="66" stroke="#ef4444" stroke-width="2"/>
+                <!-- Cột gần bọc đệm xanh dương đậm -->
+                <rect x="205" y="102" width="10" height="86" rx="3" fill="#1d4ed8" stroke="#0f172a" stroke-width="1.2"/>
+
+                <!-- 4. Vận động viên bên trái (Áo trắng quần đen - Bật nhảy đập bóng) -->
+                <g class="player-left">
+                    <!-- Bóng đổ dưới chân -->
+                    <ellipse cx="105" cy="162" rx="14" ry="4" fill="rgba(0,0,0,0.25)"/>
+                    <!-- Chân -->
+                    <path d="M 101 136 L 96 158 M 109 136 L 114 158" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round"/>
+                    <!-- Áo đấu trắng -->
+                    <rect x="97" y="114" width="16" height="24" rx="4" fill="#ffffff" stroke="#0f172a" stroke-width="1.2"/>
+                    <!-- Đầu -->
+                    <circle cx="105" cy="105" r="7.5" fill="#fed7aa" stroke="#0f172a" stroke-width="1.2"/>
+                    <path d="M 98 103 Q 105 96 112 103" fill="#0f172a"/>
+                    <!-- Tay vung đập / đỡ -->
+                    <path class="arm-left" d="M 111 118 L 128 102" stroke="#fed7aa" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <!-- 5. Vận động viên bên phải (Áo xanh quần đen - Mớm bóng & Bay người cứu bóng) -->
+                <g class="player-right">
+                    <ellipse cx="315" cy="162" rx="14" ry="4" fill="rgba(0,0,0,0.25)"/>
+                    <!-- Chân -->
+                    <path d="M 311 136 L 306 158 M 319 136 L 324 158" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round"/>
+                    <!-- Áo đấu xanh -->
+                    <rect x="307" y="114" width="16" height="24" rx="4" fill="#0284c7" stroke="#0f172a" stroke-width="1.2"/>
+                    <!-- Đầu -->
+                    <circle cx="315" cy="105" r="7.5" fill="#fed7aa" stroke="#0f172a" stroke-width="1.2"/>
+                    <path d="M 308 103 Q 315 96 322 103" fill="#0f172a"/>
+                    <!-- Tay đỡ bóng -->
+                    <path class="arm-right" d="M 309 118 L 292 106" stroke="#fed7aa" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <!-- Hiệu ứng tia lửa khi đập bóng -->
+                <g class="smash-spark">
+                    <line x1="132" y1="68" x2="144" y2="62" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="134" y1="76" x2="147" y2="76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="132" y1="84" x2="144" y2="90" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round"/>
+                </g>
+
+                <!-- 6. Quả bóng Mikasa vàng xanh xoay & bay qua lại -->
+                <g class="mikasa-ball">
+                    <circle cx="0" cy="0" r="10" fill="url(#mikasaGrad)" stroke="#0f172a" stroke-width="1.3"/>
+                    <g clip-path="url(#ballClip)">
+                        <!-- Các múi xanh dương đặc trưng của Mikasa -->
+                        <path d="M -11 -4 Q 0 -10 11 -3 L 11 2 Q 0 -5 -11 1 Z" fill="#1d4ed8"/>
+                        <path d="M -9 7 Q 0 1 10 8 L 8 12 Q 0 6 -7 11 Z" fill="#1d4ed8"/>
+                        <path d="M -3 -11 Q 3 0 -2 11 L 2 11 Q 7 0 1 -11 Z" fill="#1d4ed8"/>
+                    </g>
+                    <circle cx="0" cy="0" r="10" fill="none" stroke="#0f172a" stroke-width="1.3"/>
+                </g>
+            </svg>
+        </div>
+
+        <h1 id="question">Mai m muốn chơi bóng chuyền cùng t không?</h1>
+        <p id="subtext">Chọn thật lòng nhé!</p>
+        
+        <div class="btn-group">
+            <button id="yesBtn">Có</button>
+            <button id="noBtn">Không</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
